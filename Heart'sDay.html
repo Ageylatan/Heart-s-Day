@@ -1,0 +1,364 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Happy Heart's Day My Baby</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Great+Vibes&family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+
+<style>
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+    font-family:'Poppins', sans-serif;
+}
+
+body{
+    background: linear-gradient(135deg,#ff9a9e,#fad0c4);
+    overflow-x:hidden;
+    text-align:center;
+    color:#fff;
+}
+
+/* Floating Hearts */
+.heart{
+    position:fixed;
+    bottom:-10px;
+    font-size:20px;
+    animation:float 8s linear infinite;
+    opacity:0.6;
+}
+@keyframes float{
+    0%{transform:translateY(0) rotate(0deg);}
+    100%{transform:translateY(-110vh) rotate(360deg);}
+}
+
+header{
+    padding:40px 20px 10px;
+}
+h1{
+    font-family:'Great Vibes', cursive;
+    font-size:3rem;
+    text-shadow:0 0 15px rgba(255,255,255,0.8);
+}
+
+/* Slideshow */
+.slideshow{
+    width:100%;
+    max-width:600px;
+    height:400px; /* FIXED HEIGHT */
+    margin:30px auto;
+    position:relative;
+    overflow:hidden;
+    border-radius:20px;
+}
+
+.slide{
+    display:none;
+    width:100%;
+    height:100%;
+}
+
+.slide img{
+    width:100%;
+    height:100%;
+    object-fit:cover; /* keeps same size without stretching */
+    border-radius:20px;
+    box-shadow:0 0 20px rgba(255,255,255,0.6);
+}
+
+.prev, .next{
+    position:absolute;
+    top:50%;
+    transform:translateY(-50%);
+    background:rgba(255,255,255,0.6);
+    color:#ff4d6d;
+    border:none;
+    padding:10px 15px;
+    cursor:pointer;
+    border-radius:50%;
+    font-size:18px;
+}
+.prev{left:10px;}
+.next{right:10px;}
+
+.card{
+    background:rgba(255,255,255,0.2);
+    backdrop-filter:blur(10px);
+    margin:30px auto;
+    padding:25px;
+    border-radius:20px;
+    max-width:800px;
+    box-shadow:0 0 20px rgba(255,255,255,0.5);
+    animation:fadeIn 1.5s ease;
+}
+@keyframes fadeIn{
+    from{opacity:0; transform:translateY(20px);}
+    to{opacity:1; transform:translateY(0);}
+}
+
+button{
+    margin:15px;
+    padding:12px 25px;
+    border:none;
+    border-radius:30px;
+    background:#ff4d6d;
+    color:#fff;
+    font-size:16px;
+    cursor:pointer;
+    box-shadow:0 0 15px rgba(255,255,255,0.6);
+    transition:0.3s;
+}
+button:hover{
+    transform:scale(1.1);
+    background:#ff1e4d;
+}
+
+.hidden{
+    display:none;
+}
+
+@media(max-width:768px){
+    h1{font-size:2.2rem;}
+    .card{margin:20px;}
+
+    .slideshow{
+        height:300px; /* smaller for mobile */
+    }
+}
+</style>
+</head>
+
+<body>
+
+    <!-- PASSWORD SCREEN -->
+<div id="passwordScreen" style="
+position:fixed;
+top:0;
+left:0;
+width:100%;
+height:100%;
+background:linear-gradient(135deg,#ff758c,#ff7eb3);
+display:flex;
+justify-content:center;
+align-items:center;
+flex-direction:column;
+z-index:9999;
+color:white;
+text-align:center;
+padding:20px;
+">
+
+<h2 style="font-family:'Great Vibes', cursive; font-size:40px;">
+Enter Our Secret Password 💖
+</h2>
+<h2 style="font-family:'Great Vibes', cursive; font-size:40px;">
+(Hint: Ano name ng aso ko?)
+</h2>
+
+<input type="password" id="passwordInput" placeholder="Enter password..."
+style="
+padding:12px 20px;
+border-radius:30px;
+border:none;
+margin-top:20px;
+outline:none;
+font-size:16px;
+text-align:center;
+">
+
+<button onclick="checkPassword()" style="
+margin-top:20px;
+padding:12px 30px;
+border:none;
+border-radius:30px;
+background:#ff4d6d;
+color:white;
+font-size:16px;
+cursor:pointer;
+">
+Unlock 💕
+</button>
+
+<p id="errorMsg" style="margin-top:15px; display:none;">
+Wrong password baby 😜 Try again!
+</p>
+
+</div>
+
+
+    <audio id="bgMusic" loop>
+    <source src="music.mp3" type="audio/mpeg">
+</audio>
+
+<button id="musicBtn" onclick="toggleMusic()" 
+style="position:fixed; bottom:20px; right:20px; z-index:999; 
+background:#ff4d6d; border:none; border-radius:50%; 
+width:55px; height:55px; font-size:20px; color:white;
+box-shadow:0 0 15px rgba(255,255,255,0.8); cursor:pointer;">
+🎵
+</button>
+
+<header>
+    <h1>Happy Heart's Day My Baby</h1>
+</header>
+
+<!-- Slideshow -->
+<div class="slideshow">
+    <div class="slide"><img src="1.jpg"></div>
+    <div class="slide"><img src="2.jpg"></div>
+    <div class="slide"><img src="3.jpg"></div>
+    <div class="slide"><img src="4.jpg"></div>
+    <div class="slide"><img src="5.jpg"></div>
+    <div class="slide"><img src="6.jpg"></div>
+    <div class="slide"><img src="7.jpg"></div>
+    <div class="slide"><img src="8.jpg"></div>
+    <div class="slide"><img src="9.jpg"></div>
+    <div class="slide"><img src="10.jpg"></div>
+    <div class="slide"><img src="11.jpg"></div>
+    <div class="slide"><img src="12.jpg"></div>
+    <div class="slide"><img src="13.jpg"></div>
+    <div class="slide"><img src="14.jpg"></div>
+    <div class="slide"><img src="15.jpg"></div>
+    <div class="slide"><img src="16.jpg"></div>
+    <div class="slide"><img src="17.jpg"></div>
+    <button class="prev" onclick="changeSlide(-1)">❮</button>
+    <button class="next" onclick="changeSlide(1)">❯</button>
+</div>
+
+<!-- First Message -->
+<div class="card">
+<p>
+Hi Baby,<br><br>
+
+Hello my Lady! Happy Heart's Day sayo aking binibini🥰 it is our first heart's day and more heart's day to come lalo na pakakasalan naman kita hihihi LANDI YARN! 😜<br><br>
+
+Gusto ko lang malaman mo na blessed na blessed ako simula dumating ka sa buhay ko, at alam ko madami pa tayong pagsasamahan, pag aawayan, pag dadaanan at lalagpasan na maganda at panget na sitwasyon. Nawa maging handa ka dun ah? Wag moko iwan ta ipeket takad dingding yo laware!<br><br>
+
+Sana napasaya kita baby sa date natin sa Agkapita kahit simple lang heheh at sana nabusog kta hihi i love you mwa😘<br><br>
+
+Alam ko hmmmm medyo di tayo naging pormal o ano ba hmmmm basta, hehehe wala e hahah nag pakilala na magsyota yun na corner na tayo na kesyo madami daw nag tatanong ano ba daw talaga tayo hahah at dahil pumupunta ka nga lagi dito at natutulog ayunnn naging tayo na hahahah😜<br><br>
+
+Madami beses ko na pinlano to pero siguro ito na un hahah gusto ko lang malaman mo na mahal na mahal kita baby girl ko😘 mamahalin kita hanggat humihinga ako, iintindihin kita sa abot ng makakaya ko hahah i love you so much baby girl ko mwa mwa mwa😘 at gagawin ko best ko para mabigay sayo yun magandang future, di man maging kasing engrande at kasingyaman tulad ng iba, ehh gagawin ko naman best ko hihi i love you!😘<br><br>
+
+Sooo ayun na nga, gusto ko lang sana ano ... Ahmmmm ... Ano hehehhe ....
+</p>
+
+<button onclick="showQuestion()">Continue? Nabasa mo na ba muna lahat</button>
+</div>
+
+<!-- Second Message -->
+<div id="questionSection" class="card hidden">
+<p>
+Hehehe i love you baby ko😘 hihiya ako sayo hihihi 🥺😁 nonchalant bako? Hahaah ..<br><br>
+
+So ayun , ahmmmm gusto lang sana kita tanungin baby ko, .... Alam ko di ko formally nasabing pwede ba kita ligawan, lahat nangyari nalng sa isang iglap heheh alam mo na un hehehe🤗<br><br>
+
+Let's make this official baby hihihi, September 11, 2025 , will you be my girlfriend? ☺😇🥺🤗
+</p>
+
+<button onclick="sayYes()">Yes</button>
+<button onclick="sayNo()">No</button>
+</div>
+
+<!-- Final Message -->
+<div id="finalMessage" class="card hidden"></div>
+
+<script>
+
+    // PASSWORD FUNCTION
+function checkPassword(){
+    let password = document.getElementById("passwordInput").value;
+    
+    // CHANGE THIS PASSWORD TO YOUR SECRET WORD
+    if(password === "toby"){
+        document.getElementById("passwordScreen").style.display = "none";
+        document.getElementById("bgMusic").play();
+    } else {
+        document.getElementById("errorMsg").style.display = "block";
+    }
+}
+// Slideshow
+let slideIndex=0;
+showSlides();
+
+function showSlides(){
+    let slides=document.getElementsByClassName("slide");
+    for(let i=0;i<slides.length;i++){
+        slides[i].style.display="none";
+    }
+    slideIndex++;
+    if(slideIndex>slides.length){slideIndex=1;}
+    slides[slideIndex-1].style.display="block";
+    setTimeout(showSlides,3000);
+}
+
+function changeSlide(n){
+    slideIndex+=n-1;
+    showSlides();
+}
+
+// Show Question
+function showQuestion(){
+    document.getElementById("questionSection").classList.remove("hidden");
+}
+
+// No Button
+function sayNo(){
+    alert("anong no? Utot mo wala kana kawala sakin click mo ang yes baby hahaha!");
+}
+
+// Yes Button
+function sayYes(){
+    let final=document.getElementById("finalMessage");
+    final.innerHTML=`
+    <p>
+    Hihihi aguyyyyyy soooooo we're officially boyfriend and girlfriend September 11, 2025 baby hihihi. 
+    Alam ko na we're 9months simula nagkaaminan tayo ng nararamdaman, but we're officially 4 months hihi i love you mwa! Baka para sayo wala na naman akong kwentang tao sa ginawa kong to baby sorry na hehehe. 
+    I love you baby ko mwa😘 masaya ako palagi kasama ka, pag nakikita ka, pag nahahawakan ka, pag naaano kita... 
+    Ano??? Naaamoy kasi utak mo na naman haysss! I love you baby ko😍🥰<br><br>
+
+    Happy Heart's Day sayo aking binibini! Nawa napasaya kita at mapasaya kita sa mga susunod na oras, araw, linggo, buwan, taon at panahon ng atin buhay! 
+    God bless us more and more at patuloy na si Lord ang center ng relationship natin! I love you baby ko🥰😍😘!
+    </p>
+    `;
+    final.classList.remove("hidden");
+}
+
+// Floating hearts
+for(let i=0;i<20;i++){
+    let heart=document.createElement("div");
+    heart.classList.add("heart");
+    heart.style.left=Math.random()*100+"vw";
+    heart.style.animationDuration=(Math.random()*5+5)+"s";
+    heart.innerHTML="❤";
+    document.body.appendChild(heart);
+}
+
+// Background Music
+let music = document.getElementById("bgMusic");
+let musicBtn = document.getElementById("musicBtn");
+
+// Try autoplay
+window.addEventListener("load", function(){
+    music.play().catch(function(){
+        console.log("Autoplay blocked, waiting for user interaction.");
+    });
+});
+
+// Toggle Play/Pause
+function toggleMusic(){
+    if(music.paused){
+        music.play();
+        musicBtn.innerHTML = "🎵";
+    } else {
+        music.pause();
+        musicBtn.innerHTML = "🔇";
+    }
+}
+</script>
+
+</body>
+</html>
